@@ -9,12 +9,9 @@ on:
 jobs:
   test:
     # Linux runner
-    runs-on: ubuntu-latest
     # Container image that the job will run in
     container: python:3.10
 
-    # Service containers
-    services:
       redis:
         image: redis
         options: >-
@@ -30,7 +27,6 @@ jobs:
       - name: Install requirements (ffmpeg)
         run: |
           apt-get update
-          apt-get install -y ffmpeg
-      - name: Test with pytest
+    - name: Test with pytest
         run: |
           pytest
